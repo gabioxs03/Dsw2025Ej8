@@ -6,7 +6,8 @@ namespace Dsw2025Ej8
     {
         static void Main(string[] args)
         {
-            var cuenta = new CuentaBancaria("1", 0, TipoCuenta.CuentaCorriente, new string[]);
+            CuentaCorriente cuentaCorriente = new CuentaCorriente("123456",new string[] { "Bernabe Diaz" },100.0m, 50.0m);
+            CajaDeAhorro cajaDeAhorro = new CajaDeAhorro("654321",new string[]{"Gabriel Samaniego","Felicitas Ralle"}, 500.0m);
 
         }
     }
