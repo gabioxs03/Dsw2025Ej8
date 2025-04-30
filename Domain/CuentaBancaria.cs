@@ -60,7 +60,7 @@ public abstract class CuentaBancaria
     {
         if (monto <= 0)
         {
-            throw new ArgumentException("El monto debe ser mayor que cero.");
+            throw new ArgumentException("El monto ingresado no es válido para la operación solicitada.");
         }
     }
 
@@ -68,7 +68,7 @@ public abstract class CuentaBancaria
     {
         if (Estado != Estado.Activa)
         {
-            throw new InvalidOperationException("La cuenta no está activa.");
+            throw new InvalidOperationException($"No se puede operar con la cuenta {this.Estado}.");
         }
     }
     public virtual void Depositar(decimal monto)
@@ -84,6 +84,6 @@ public abstract class CuentaBancaria
     public void retiroInvalido()
     {
         Estado = Estado.Suspendida;
-        throw new InvalidOperationException("Saldo Insuficiente.");
+        throw new InvalidOperationException("La cuenta no cuenta con saldo para la operación solicitada. Fue suspendida.");
     }
 }
