@@ -68,7 +68,7 @@ public abstract class CuentaBancaria
     {
         if (Estado != Estado.Activa)
         {
-            throw new InvalidOperationException($"No se puede operar con la cuenta {this.Estado}.");
+            throw new InvalidOperationException($"No se puede operar con la cuenta {Estado}.");
         }
     }
     public virtual void Depositar(decimal monto)
