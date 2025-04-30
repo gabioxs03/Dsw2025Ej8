@@ -2,7 +2,7 @@
 
 public class CuentaBancaria
 {
-    private TipoCuenta _tipo;
+    public TipoCuenta Tipo { get; };//este solo tiene getter, es solo lectura
     private string _numero;
     private decimal _saldo;
     private Estado _estado;
@@ -15,7 +15,7 @@ public class CuentaBancaria
     {
         _numero = numero;
         _saldo = saldo;
-        _tipo = tipo;
+        _tipo = tipo; //esto esta ok
         _estado = Estado.Activa;
         _titulares = titulares;
     }
