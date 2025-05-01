@@ -2,75 +2,20 @@
 
 public abstract class CuentaBancaria
 {
-    public abstract TipoCuenta Tipo { get; }//este solo tiene getter, es solo lectura
+    public abstract TipoCuenta Tipo { get; }
     public string Numero { get; }
     public decimal Saldo { get; protected set; }
     public Estado Estado { get; protected set; }
     public string[] Titulares { get; }
+
     public CuentaBancaria(string numero, string[] titulares, decimal saldo)
     {
         Numero = numero;
         Saldo = saldo;
-        // _tipo = tipo; //esto esta ok. Si lo descomentas, agregalo en los parametros del constructor (TipoCuenta tipo,)
         Estado = Estado.Activa;
         Titulares = titulares;
     }
-    #region Getters/Setters
-    //public string GetNumero()
-    //{
-    //    return _numero;
-    //}
 
-    //public decimal GetSaldo()
-    //{
-    //    return _saldo;
-    //}
-    //public TipoCuenta GetTipo()
-    //{
-    //    return _tipo;
-    //}
-
-    //public Estado GetEstado()
-    //{
-    //    return _estado;
-    //}
-
-    //public void SetEstado(Estado estado)
-    //{
-    //    _estado = estado;
-    //}
-
-    //public decimal GetComision()
-    //{
-    //    return _comision;
-    //}
-
-    //public void SetComision(decimal comision)
-    //{
-    //    _comision = comision;
-    //}
-
-    //public string[] GetTitulares()
-    //{
-    //    return _titulares;
-    //}
-    #endregion
-
-    public void validarMonto(decimal monto)
-    {
-        if (monto <= 0)
-        {
-            throw new ArgumentException("El monto ingresado no es válido para la operación solicitada.");
-        }
-    }
-
-    public void validarCuentaActiva()
-    {
-        if (Estado != Estado.Activa)
-        {
-            throw new InvalidOperationException($"No se puede operar con la cuenta {Estado}.");
-        }
-    }
     public virtual void Depositar(decimal monto)
     {
         Console.WriteLine("Deposito en cuenta bancaria");
@@ -85,5 +30,20 @@ public abstract class CuentaBancaria
     {
         Estado = Estado.Suspendida;
         throw new InvalidOperationException("La cuenta no cuenta con saldo para la operación solicitada. Fue suspendida.");
+    }
+    public void validarMonto(decimal monto)
+    {
+        if (monto <= 0)
+        {
+            throw new ArgumentException("El monto ingresado no es válido para la operación solicitada.");
+        }
+    }
+
+    public void validarCuentaActiva()
+    {
+        if (Estado != Estado.Activa)
+        {
+            throw new InvalidOperationException($"No se puede operar con la cuenta {Estado}.");
+        }
     }
 }
