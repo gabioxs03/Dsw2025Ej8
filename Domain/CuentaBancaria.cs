@@ -86,4 +86,21 @@ public abstract class CuentaBancaria
         Estado = Estado.Suspendida;
         throw new InvalidOperationException("La cuenta no cuenta con saldo para la operación solicitada. Fue suspendida.");
     }
+
+    private static List<CuentaBancaria> cuentas = new();
+
+    public void agregarCuenta()
+    {
+        cuentas.Add(this);
+    }
+    public static void mostrarResumen()
+    {
+
+        foreach (var cuenta in cuentas)
+        {
+            var resumen = new { Numero = cuenta.Numero, Tipo = cuenta.Tipo, Saldo = cuenta.Saldo };
+
+            Console.WriteLine($"Cuenta {resumen.Numero} - Tipo: {resumen.Tipo} - Saldo: $ {resumen.Saldo}");
+        }
+    }
 }
