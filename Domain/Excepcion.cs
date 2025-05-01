@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 
 namespace Dsw2025Ej8.Domain;
 
-public class MontoNoValido : Exception
+public class MontoNoValidoException : Exception
 {
-    public MontoNoValido(string message) : base(message)
+    public MontoNoValidoException() : base("El monto ingresado no es valido para la operacion solicitada.")
     {
     }
 }
 
-public class CuentaNoActiva : Exception
+public class CuentaNoActivaException : Exception
 { 
-    public CuentaNoActiva(string message) : base(message)
+    public CuentaNoActivaException(string estado) : base($"No se puede operar con la cuenta {estado}")
     {
     }
 }
 
-public class SaldoInsuficiente : Exception
+public class SaldoInsuficienteException : Exception
 {
-    public SaldoInsuficiente(string message) : base(message)
+    public SaldoInsuficienteException() : base("La cuenta no cuenta con saldo para la operacion solicitada. Fue suspendida.")
     {
     }
 }

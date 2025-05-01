@@ -24,18 +24,18 @@ public abstract class CuentaBancaria
     public virtual void Retirar(decimal monto)
     {
         Console.WriteLine("Retiro en cuenta bancaria");
-    }
+    } 
 
     public void retiroInvalido()
     {
         Estado = Estado.Suspendida;
-        throw new InvalidOperationException("La cuenta no cuenta con saldo para la operación solicitada. Fue suspendida.");
+        throw new SaldoInsuficienteException();
     }
     public void validarMonto(decimal monto)
     {
         if (monto <= 0)
         {
-            throw new ArgumentException("El monto ingresado no es válido para la operación solicitada.");
+            throw new MontoNoValidoException();
         }
     }
 
@@ -43,7 +43,7 @@ public abstract class CuentaBancaria
     {
         if (Estado != Estado.Activa)
         {
-            throw new InvalidOperationException($"No se puede operar con la cuenta {Estado}.");
+            throw new CuentaNoActivaException(Estado.ToString());
         }
     }
 }
