@@ -31,6 +31,7 @@ public static class Menu
                 {
                     if (cuenta.Numero == numero) cuenta.Depositar(monto);
                 }
+                Console.ReadKey();
                 RunMenu();
                 break;
             case 2:
@@ -44,6 +45,7 @@ public static class Menu
                     if (cuenta.Numero == numero2) cuenta.Retirar(monto2);
                     Console.ReadKey();
                 }
+                Console.ReadKey();
                 RunMenu();
                 break;
             case 3:
