@@ -26,12 +26,12 @@ public abstract class CuentaBancaria
         Console.WriteLine("Retiro en cuenta bancaria");
     } 
 
-    public void retiroInvalido()
+    public void RetiroInvalido()
     {
         Estado = Estado.Suspendida;
         throw new SaldoInsuficienteException();
     }
-    public void validarMonto(decimal monto)
+    public void ValidarMonto(decimal monto)
     {
         if (monto <= 0)
         {
@@ -39,7 +39,7 @@ public abstract class CuentaBancaria
         }
     }
 
-    public void validarCuentaActiva()
+    public void ValidarCuentaActiva()
     {
         if (Estado != Estado.Activa)
         {
