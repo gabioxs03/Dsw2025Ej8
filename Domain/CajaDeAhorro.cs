@@ -9,11 +9,8 @@ namespace Dsw2025Ej8.Domain
     public class CajaDeAhorro : CuentaBancaria
     {
         public override TipoCuenta Tipo => TipoCuenta.CajaDeAhorro; 
-        public decimal TasaDeInteres { get; set; } 
-        public CajaDeAhorro(string numero, string[] titulares, decimal saldo) : base(numero, titulares, saldo)
-        {
-            TasaDeInteres = 0.05m;
-        }
+        public decimal TasaDeInteres { get; init; } 
+        public CajaDeAhorro(string numero, string[] titulares, decimal saldo) : base(numero, titulares, saldo) {}
         public override void Depositar(decimal monto)
         {
             validarCuentaActiva();

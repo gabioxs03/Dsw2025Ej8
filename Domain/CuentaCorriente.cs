@@ -10,23 +10,12 @@ namespace Dsw2025Ej8.Domain
     public class CuentaCorriente : CuentaBancaria
     {
         public override TipoCuenta Tipo => TipoCuenta.CuentaCorriente;
-        public decimal LimiteDeDescubierto { get; protected set; }
-        private decimal Comision { get; set; }
+        public decimal LimiteDeDescubierto { get; init; }
+        public decimal Comision { get; }
         public CuentaCorriente(string numero, string[] titulares, decimal saldo, decimal comision) : base(numero, titulares, saldo)
         {
             Comision = comision;
         }
-
-        #region getter/setter
-        //public decimal GetLimiteDeDescubierto()
-        //{
-        //    return _limiteDeDescubierto;
-        //}
-        //public void SetLimiteDeDescubierto(decimal limiteDeDescubierto)
-        //{
-        //    _limiteDeDescubierto = limiteDeDescubierto;
-        //}
-        #endregion
 
         public override void Depositar(decimal monto)
         {

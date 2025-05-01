@@ -3,10 +3,10 @@
 public abstract class CuentaBancaria
 {
     public abstract TipoCuenta Tipo { get; }//este solo tiene getter, es solo lectura
-    private string Numero { get; }
-    protected decimal Saldo { get; set; }
-    protected Estado Estado { get; set; }
-    private string[] Titulares { get; }
+    public string Numero { get; }
+    public decimal Saldo { get; protected set; }
+    public Estado Estado { get; protected set; }
+    public string[] Titulares { get; }
     public CuentaBancaria(string numero, string[] titulares, decimal saldo)
     {
         Numero = numero;
