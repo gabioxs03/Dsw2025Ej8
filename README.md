@@ -7,7 +7,7 @@
 ###	Ralle, Felicitas
 ###	Samaniego, Gabriel Leopoldo 
 
-1. 1. Realizar una bifurcacion (fork) del [repositorio](https://github.com/ing-software-frt-utn/dsw2025ej8).
+1. Realizar una bifurcacion (fork) del [repositorio](https://github.com/ing-software-frt-utn/dsw2025ej8).
 2. Crear una rama de larga duracion development.
 3. Clonar el repositorio bifurcado y trabajar sobre la rama development.
 4. Refactorizar el c�digo aplicando herencia seg�n el caso.

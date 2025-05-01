@@ -8,6 +8,6 @@ internal class Program
     static void Main(string[] args)
     {
         Persistencia.InicializarPersistencia();
-        Menu.Run();
+        Menu.RunMenu();
     }
 }
