@@ -9,7 +9,7 @@ namespace Dsw2025Ej8.View;
 
 public static class Menu
 {
-    public static void Run()
+    public static void RunMenu()
     {
         Console.Clear();
         Console.WriteLine("-----------Sistema Bancario-----------");
@@ -17,34 +17,34 @@ public static class Menu
         Console.WriteLine("2. Retirar");
         Console.WriteLine("3. Listar Resumen Cuentas");
         Console.WriteLine("4. Salir");
-        Console.WriteLine("Seleccione una opcion: ");
+        Console.WriteLine("Seleccione una opcion:");
         var opcion = Convert.ToInt32(Console.ReadLine());
         switch (opcion)
         {
             case 1:
                 Console.Clear();
-                Console.WriteLine("Ingrese el numero de cuenta: ");
+                Console.WriteLine("Ingrese el numero de cuenta:");
                 var numero = Console.ReadLine();
-                Console.WriteLine("Ingrese el monto a depositar: ");
+                Console.WriteLine("Ingrese el monto a depositar:");
                 var monto = Convert.ToDecimal(Console.ReadLine());
                 foreach (var cuenta in Persistencia.Cuentas)
                 {
                     if (cuenta.Numero == numero) cuenta.Depositar(monto);
                 }
-                Run();
+                RunMenu();
                 break;
             case 2:
                 Console.Clear();
-                Console.WriteLine("Ingrese el numero de cuenta: ");
+                Console.WriteLine("Ingrese el numero de cuenta:");
                 var numero2 = Console.ReadLine();
-                Console.WriteLine("Ingrese el monto a retirar: ");
+                Console.WriteLine("Ingrese el monto a retirar:");
                 var monto2 = Convert.ToDecimal(Console.ReadLine());
                 foreach (var cuenta in Persistencia.Cuentas)
                 {
                     if (cuenta.Numero == numero2) cuenta.Retirar(monto2);
                     Console.ReadKey();
                 }
-                Run();
+                RunMenu();
                 break;
             case 3:
                 Console.Clear();
@@ -53,15 +53,16 @@ public static class Menu
                     var resumen = new
                     {
                         Numero = cuenta.Numero,
+                        Titulares = string.Join(", ", cuenta.Titulares),
                         Tipo = cuenta.Tipo.ToString(),
                         Saldo = cuenta.Saldo,
                         Estado = cuenta.Estado,
                     };
 
-                    Console.WriteLine($"Número: {resumen.Numero}, Tipo: {resumen.Tipo}, Saldo: {resumen.Saldo}, Estado de cuenta: {resumen.Estado}");
+                    Console.WriteLine($"Número: {resumen.Numero}, Titulares: {resumen.Titulares}, Tipo: {resumen.Tipo}, Saldo: {resumen.Saldo}, Estado de cuenta: {resumen.Estado}");
                 }
                 Console.ReadKey();
-                Run();
+                RunMenu();
                 break;
             case 4:
                 Console.WriteLine("Saliendo del sistema...");
@@ -69,7 +70,7 @@ public static class Menu
                 break;
             default:
                 Console.WriteLine("Opcion no valida");
-                Run();
+                RunMenu();
                 break;
         }
     }
