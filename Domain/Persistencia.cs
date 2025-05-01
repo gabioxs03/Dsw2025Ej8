@@ -9,7 +9,7 @@ namespace Dsw2025Ej8.Domain;
 public static class Persistencia
 {
     public static List<CuentaBancaria> Cuentas {  get; } = new List<CuentaBancaria>();
-
+     
     public static void InicializarPersistencia()
     {
         Cuentas.Add(new CuentaCorriente("1", new[] { "Bernabe Diaz" , "Gabriel Samaniego"}, 10000.0M, 0.02M) { LimiteDeDescubierto = 1000 });
