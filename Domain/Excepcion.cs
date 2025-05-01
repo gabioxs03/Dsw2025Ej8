@@ -27,3 +27,10 @@ public class SaldoInsuficienteException : Exception
     {
     }
 }
+
+public class CuentaNoEncontradaException : Exception
+{
+    public CuentaNoEncontradaException() : base("La cuenta ingresada no existe.")
+    {
+    }
+}

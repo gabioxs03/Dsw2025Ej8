@@ -27,10 +27,16 @@ public static class Menu
                 var numero = Console.ReadLine();
                 Console.WriteLine("Ingrese el monto a depositar:");
                 var monto = Convert.ToDecimal(Console.ReadLine());
+                var cuentaEncontrada = false;
                 foreach (var cuenta in Persistencia.Cuentas)
                 {
-                    if (cuenta.Numero == numero) cuenta.Depositar(monto);
+                    if (cuenta.Numero == numero)
+                    {
+                        cuenta.Depositar(monto);
+                        cuentaEncontrada = true;
+                    }
                 }
+                if(!cuentaEncontrada) throw new CuentaNoEncontradaException();
                 Console.ReadKey();
                 RunMenu();
                 break;
@@ -40,11 +46,16 @@ public static class Menu
                 var numero2 = Console.ReadLine();
                 Console.WriteLine("Ingrese el monto a retirar:");
                 var monto2 = Convert.ToDecimal(Console.ReadLine());
+                var cuentaEncontrada2 = false;
                 foreach (var cuenta in Persistencia.Cuentas)
                 {
-                    if (cuenta.Numero == numero2) cuenta.Retirar(monto2);
-                    Console.ReadKey();
+                    if (cuenta.Numero == numero2)
+                    {
+                        cuenta.Retirar(monto2);
+                        cuentaEncontrada = true;
+                    }
                 }
+                if(!cuentaEncontrada2) throw new CuentaNoEncontradaException();
                 Console.ReadKey();
                 RunMenu();
                 break;
