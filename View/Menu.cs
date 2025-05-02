@@ -28,15 +28,19 @@ public static class Menu
                 Console.WriteLine("Ingrese el monto a depositar:");
                 var monto = Convert.ToDecimal(Console.ReadLine());
                 var cuentaEncontrada = false;
-                foreach (var cuenta in Persistencia.Cuentas)
+                try
                 {
-                    if (cuenta.Numero == numero)
+                    foreach (var cuenta in Persistencia.Cuentas)
                     {
-                        cuenta.Depositar(monto);
-                        cuentaEncontrada = true;
+                        if (cuenta.Numero == numero)
+                        {
+                            cuenta.Depositar(monto);
+                            cuentaEncontrada = true;
+                        }
                     }
+                    if (!cuentaEncontrada) throw new CuentaNoEncontradaException();
                 }
-                if(!cuentaEncontrada) throw new CuentaNoEncontradaException();
+                catch (Exception ex) { Console.WriteLine(ex.Message); }
                 Console.ReadKey();
                 RunMenu();
                 break;
@@ -46,32 +50,20 @@ public static class Menu
                 var numero2 = Console.ReadLine();
                 Console.WriteLine("Ingrese el monto a retirar:");
                 var monto2 = Convert.ToDecimal(Console.ReadLine());
-                foreach (var cuenta in Persistencia.Cuentas)
+                cuentaEncontrada = false;
+                try
                 {
-                    if (cuenta.Numero == numero2)
+                    foreach (var cuenta in Persistencia.Cuentas)
                     {
-                        try
+                        if (cuenta.Numero == numero2)
                         {
                             cuenta.Retirar(monto2);
-                        }
-                        catch (MontoNoValidoException ex)
-                        {
-                            Console.WriteLine($"[Monto inválido] {ex.Message}");
-                        }
-                        catch (CuentaNoActivaException ex)
-                        {
-                            Console.WriteLine($"[Cuenta no activa] {ex.Message}");
-                        }
-                        catch (SaldoInsuficienteException ex)
-                        {
-                            Console.WriteLine($"[Saldo insuficiente] {ex.Message}");
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine($"[Error] {ex.Message}");
+                            cuentaEncontrada = true;
                         }
                     }
+                    if (!cuentaEncontrada) throw new CuentaNoEncontradaException();
                 }
+                catch (Exception ex) { Console.WriteLine(ex.Message); }
                 Console.ReadKey();
                 RunMenu();
                 break;

@@ -27,7 +27,7 @@ public class CuentaCorriente : CuentaBancaria
             Saldo += monto;
             Console.WriteLine("Se realizo el deposito exitosamente");
         }
-        catch (Exception ex) { Console.WriteLine($"Error en el deposito: {ex.Message}"); }
+        catch (Exception ex) { Console.WriteLine(ex.Message); }
     }
 
     public override void Retirar(decimal monto)
@@ -43,6 +43,6 @@ public class CuentaCorriente : CuentaBancaria
             else { RetiroInvalido(); }
             Console.WriteLine("Se realizo el retiro exitosamente");
         }
-        catch (Exception ex) { Console.WriteLine($"Error en el retiro: {ex.Message}"); }
+        catch (Exception ex) { Console.WriteLine(ex.Message); }
     }
 }
