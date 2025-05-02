@@ -3,9 +3,10 @@
 ### Herencia y propiedades
 
 ## INTEGRANTES
-###	Diaz Alvillos, Bernabe
-###	Ralle, Felicitas
-###	Samaniego, Gabriel Leopoldo 
+### 56099 - Diaz Alvillos, Bernabe - bdiazalvillos@gmail.com
+### 53447 - Samaniego, Gabriel - gabrielsamaniego2016@gmail.com
+### 56115 - Ralle, Felicitas - felicitasralle2009@gmail.com
+
 
 1. Realizar una bifurcacion (fork) del [repositorio](https://github.com/ing-software-frt-utn/dsw2025ej8).
 2. Crear una rama de larga duracion development.
