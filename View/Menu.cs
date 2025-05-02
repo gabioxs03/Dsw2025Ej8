@@ -46,16 +46,32 @@ public static class Menu
                 var numero2 = Console.ReadLine();
                 Console.WriteLine("Ingrese el monto a retirar:");
                 var monto2 = Convert.ToDecimal(Console.ReadLine());
-                var cuentaEncontrada2 = false;
                 foreach (var cuenta in Persistencia.Cuentas)
                 {
                     if (cuenta.Numero == numero2)
                     {
-                        cuenta.Retirar(monto2);
-                        cuentaEncontrada = true;
+                        try
+                        {
+                            cuenta.Retirar(monto2);
+                        }
+                        catch (MontoNoValidoException ex)
+                        {
+                            Console.WriteLine($"[Monto inválido] {ex.Message}");
+                        }
+                        catch (CuentaNoActivaException ex)
+                        {
+                            Console.WriteLine($"[Cuenta no activa] {ex.Message}");
+                        }
+                        catch (SaldoInsuficienteException ex)
+                        {
+                            Console.WriteLine($"[Saldo insuficiente] {ex.Message}");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"[Error] {ex.Message}");
+                        }
                     }
                 }
-                if(!cuentaEncontrada2) throw new CuentaNoEncontradaException();
                 Console.ReadKey();
                 RunMenu();
                 break;
