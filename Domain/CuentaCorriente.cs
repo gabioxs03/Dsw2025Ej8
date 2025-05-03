@@ -21,21 +21,21 @@ public class CuentaCorriente : CuentaBancaria
     {
         try
         {
-            ValidarCuentaActiva();
             ValidarMonto(monto);
+            ValidarCuentaActiva();
             monto -= monto * Comision;
             Saldo += monto;
             Console.WriteLine("Se realizo el deposito exitosamente");
         }
-        catch (Exception ex) { Console.WriteLine($"Error en el deposito: {ex.Message}"); }
+        catch (Exception ex) { Console.WriteLine(ex.Message); }
     }
 
     public override void Retirar(decimal monto)
     {
         try
         {
-            ValidarCuentaActiva();
             ValidarMonto(monto);
+            ValidarCuentaActiva();
             if (Saldo - monto >= -LimiteDeDescubierto)
             {
                 Saldo -= monto;
@@ -43,6 +43,6 @@ public class CuentaCorriente : CuentaBancaria
             else { RetiroInvalido(); }
             Console.WriteLine("Se realizo el retiro exitosamente");
         }
-        catch (Exception ex) { Console.WriteLine($"Error en el retiro: {ex.Message}"); }
+        catch (Exception ex) { Console.WriteLine(ex.Message); }
     }
 }
