@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dsw2025Ej8.Data;
 using Dsw2025Ej8.Domain;
 
 namespace Dsw2025Ej8.View;
@@ -25,8 +26,6 @@ public static class Menu
                 Console.Clear();
                 Console.WriteLine("Ingrese el numero de cuenta:");
                 var numero = Console.ReadLine();
-                Console.WriteLine("Ingrese el monto a depositar:");
-                var monto = Convert.ToDecimal(Console.ReadLine());
                 var cuentaEncontrada = false;
                 try
                 {
@@ -34,13 +33,15 @@ public static class Menu
                     {
                         if (cuenta.Numero == numero)
                         {
-                            cuenta.Depositar(monto);
                             cuentaEncontrada = true;
+                            Console.WriteLine("Ingrese el monto a depositar:");
+                            var monto = Convert.ToDecimal(Console.ReadLine());
+                            cuenta.Depositar(monto);
                         }
                     }
                     if (!cuentaEncontrada) throw new CuentaNoEncontradaException();
                 }
-                catch (Exception ex) { Console.WriteLine(ex.Message); }
+                catch(CuentaNoEncontradaException ex) { Console.WriteLine(ex.Message); }
                 Console.ReadKey();
                 RunMenu();
                 break;
@@ -48,8 +49,6 @@ public static class Menu
                 Console.Clear();
                 Console.WriteLine("Ingrese el numero de cuenta:");
                 var numero2 = Console.ReadLine();
-                Console.WriteLine("Ingrese el monto a retirar:");
-                var monto2 = Convert.ToDecimal(Console.ReadLine());
                 cuentaEncontrada = false;
                 try
                 {
@@ -57,13 +56,15 @@ public static class Menu
                     {
                         if (cuenta.Numero == numero2)
                         {
-                            cuenta.Retirar(monto2);
                             cuentaEncontrada = true;
+                            Console.WriteLine("Ingrese el monto a retirar:");
+                            var monto2 = Convert.ToDecimal(Console.ReadLine());
+                            cuenta.Retirar(monto2);
                         }
                     }
                     if (!cuentaEncontrada) throw new CuentaNoEncontradaException();
                 }
-                catch (Exception ex) { Console.WriteLine(ex.Message); }
+                catch (CuentaNoEncontradaException ex) { Console.WriteLine(ex.Message); }
                 Console.ReadKey();
                 RunMenu();
                 break;

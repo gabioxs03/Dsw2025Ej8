@@ -21,8 +21,8 @@ public class CuentaCorriente : CuentaBancaria
     {
         try
         {
-            ValidarCuentaActiva();
             ValidarMonto(monto);
+            ValidarCuentaActiva();
             monto -= monto * Comision;
             Saldo += monto;
             Console.WriteLine("Se realizo el deposito exitosamente");
@@ -34,8 +34,8 @@ public class CuentaCorriente : CuentaBancaria
     {
         try
         {
-            ValidarCuentaActiva();
             ValidarMonto(monto);
+            ValidarCuentaActiva();
             if (Saldo - monto >= -LimiteDeDescubierto)
             {
                 Saldo -= monto;

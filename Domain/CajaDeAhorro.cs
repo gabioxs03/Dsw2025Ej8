@@ -15,8 +15,8 @@ public class CajaDeAhorro : CuentaBancaria
     {
         try
         {
-            ValidarCuentaActiva();
             ValidarMonto(monto);
+            ValidarCuentaActiva();
             Saldo += monto;
             Console.WriteLine("Se realizo el deposito exitosamente");
         }
@@ -27,8 +27,8 @@ public class CajaDeAhorro : CuentaBancaria
     {
         try
         {
-            ValidarCuentaActiva();
             ValidarMonto(monto);
+            ValidarCuentaActiva();
             if (monto <= Saldo) { Saldo -= monto; }
             else { RetiroInvalido(); }
             Console.WriteLine("Se realizo el retiro exitosamente");
